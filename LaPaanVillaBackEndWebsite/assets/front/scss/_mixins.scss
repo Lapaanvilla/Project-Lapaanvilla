@@ -1,0 +1,61 @@
+/*--- Font-Family ---*/
+@mixin font-face($font-family, $url, $font-weight, $font-style) {
+	@font-face {
+		font-family: '#{$font-family}';
+		src: url('../fonts/#{$url}.eot');
+		src: url('../fonts/#{$url}.eot?#iefix') format('embedded-opentype'),
+		     url('../fonts/#{$url}.woff') format('woff'),
+		     url('../fonts/#{$url}.ttf') format('truetype'),
+		     url('../fonts/#{$url}.svg') format('svg');
+		font-weight: #{$font-weight};
+		font-style: #{$font-style};
+	}
+}
+
+/*--- Webkit ---*/
+@mixin prefix($property, $parameters) {
+	@each $prefix in -webkit-, -moz-, "" {
+		#{$prefix}#{$property}: $parameters;
+	}
+}
+
+/*--- Media Query ---*/
+@mixin responsive($width, $type: max) {
+    @if map_has_key($grid-breakpoints, $width) {
+        $width: map_get($grid-breakpoints, $width);
+        @if $type == max {
+            $width: $width - 1px;
+        }
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+/*--- Scaller ---*/
+@mixin clamp(
+	$property,
+	$min-size,
+	$scaler,
+	$max-size,
+	$min-size-left: false,
+	$scaler-left: false,
+	$max-size-left: false
+) {
+	@if $min-size-left == false {
+		#{$property}: $max-size;
+		#{$property}: #{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"};
+		#{$property}: clamp($min-size, $scaler, $max-size);
+	} @else if $min-size-left == 0 or $min-size-left == auto {
+		#{$property}: $max-size $min-size-left;
+		#{$property}: #{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"}
+		$min-size-left;
+		#{$property}: clamp($min-size, $scaler, $max-size) $min-size-left;
+	} @else {
+		#{$property}: $max-size $min-size-left;
+		#{$property}: #{"min(max(#{$min-size}, #{$scaler}), #{$max-size})"}
+		#{"min(max(#{$min-size-left}, #{$scaler-left}), #{$max-size-left})"};
+		#{$property}: clamp($min-size, $scaler, $max-size)
+		clamp($min-size-left, $scaler-left, $max-size-left);
+	}
+}

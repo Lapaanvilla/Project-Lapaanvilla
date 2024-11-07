@@ -1,0 +1,11 @@
+DirectoryIndex index.php
+RewriteEngine on
+RewriteBase /
+#RewriteRule (.*)$ https://demo.eatanceapp.com/restaurantapp/mrpplatinum [R=301,L]
+RewriteCond $1 !^(index\.php|(.*)\.swf|forums|images|css|downloads|assets|cometchat|jquery|js|robots\.txt|favicon\.ico)
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ https://eatanceweb.evdpl.com/$1 [R,L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ ./index.php?$1 [L,QSA]
+RedirectMatch 404 /\.git*

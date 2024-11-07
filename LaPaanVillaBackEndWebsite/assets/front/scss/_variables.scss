@@ -1,0 +1,196 @@
+@import "mixins";
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1400px,
+  xxxl: 1600px
+) !default;
+
+$primary:               #4CA443 !default;
+$secondary:             #4CA443 !default;
+$success:               #00900E !default;
+$danger:                #db2b38 !default;
+$warning:               #ebb024 !default;
+$info:                  #0dcaf0 !default;
+$light:                 #F2F5F6 !default;
+$dark:                  #000000 !default;
+$white:                 #FFFFFF !default;
+$black:                 #000000 !default;
+$body-bg:               #f6f5f1 !default;
+$body-color:            #000000 !default;
+$border-color:          #D0D0D0 !default; 
+
+:root {
+    --bs-primary: #{$primary};              --bs-primary-rgb: 76, 164, 67;
+    --bs-secondary: #{$secondary};          --bs-secondary-rgb: 76, 164, 67;
+    --bs-success: #{$success};              --bs-success-rgb: 0, 144, 14;
+    --bs-danger: #{$danger};                --bs-danger-rgb: 219, 43, 56;
+    --bs-warning: #{$warning};              --bs-warning-rgb: 235, 176, 36;
+    --bs-info: #{$info};                    --bs-info-rgb: 13, 202, 240; 
+    --bs-light: #{$light};                  --bs-light-rgb: 242, 245, 246;
+    --bs-dark: #{$dark};                    --bs-dark-rgb: 0, 0, 0;
+    --bs-white: #{$white};                  --bs-white-rgb: 255, 255, 255;
+    --bs-black: #{$black};                  --bs-black-rgb: 0, 0, 0;
+
+    --bs-body-color: #{$body-color};           --bs-body-color-rgb: 0, 0, 0;
+    --bs-body-bg: #{$body-bg};                 --bs-body-bg-rgb: 246, 245, 241;
+    --bs-border-color: #{$border-color};       --bs-border-color-rgb: 208, 208, 208;
+
+    --bs-font: 'Roboto', sans-serif;
+    --bs-font-heading: 'Roboto', sans-serif;
+    --bs-font-italic: 'Roboto', sans-serif;
+
+    --bs-body-ff: var(--bs-font);
+    --bs-body-fs: 16px;
+    --bs-body-lh: 28px;
+    --bs-body-fw: 400;
+
+    --bs-small-font-size: 14px;
+    --bs-small-line-height: 24px;
+
+    --bs-font-size-h1: 36px;                --bs-line-height-h1: 42px;
+    --bs-font-size-h2: 24px;                --bs-line-height-h2: 30px;
+    --bs-font-size-h3: 22px;                --bs-line-height-h3: 28px;
+    --bs-font-size-h4: 20px;                --bs-line-height-h4: 26px;
+    --bs-font-size-h5: 18px;                --bs-line-height-h5: 24px;
+    --bs-font-size-h6: 16px;                --bs-line-height-h6: 24px;
+
+    --bs-radius-lg: 12px;
+    --bs-radius-md: 10px;
+    --bs-radius-sm: 8px;
+    --bs-radius-xs: 6px;
+    --bs-radius: 4px;
+
+    --bs-font-thin:  100;
+    --bs-font-extra-light: 200;
+    --bs-font-light: 300;
+    --bs-font-regular: 400;
+    --bs-font-medium: 500;  
+    --bs-font-semi-bold: 600;
+    --bs-font-bold: 700;
+    --bs-font-extra-bold: 800;
+    --bs-font-black: 900;   
+
+    --transition: all 0.4s ease-in-out 0s;
+
+    --bs-gutter: 20px;
+
+    --bs-space-y: 15px;
+    --bs-space-sm-y: 9px;
+    --bs-space-xs-y: 5px;
+}
+
+@media(max-width: 1199px) {
+    :root {
+        --bs-font-size-h1: 30px;                --bs-line-height-h1: 36px;
+        --bs-font-size-h2: 22px;                --bs-line-height-h2: 28px;
+        --bs-font-size-h3: 20px;                --bs-line-height-h3: 26px;
+        --bs-font-size-h4: 18px;                --bs-line-height-h4: 24px;
+        --bs-font-size-h5: 16px;                --bs-line-height-h5: 24px;
+        --bs-font-size-h6: 16px;                --bs-line-height-h6: 24px;
+    }
+}
+
+$grid-gutter-width:           20px !default;
+
+$spacer: 5px !default;
+$spacers: (
+  0: 0,
+  1: $spacer * 1,
+  2: $spacer * 2,
+  3: $spacer * 3,
+  4: $spacer * 4,
+  5: $spacer * 5,
+  6: $spacer * 6,
+  7: $spacer * 7,
+  8: $spacer * 8,
+  9: $spacer * 9,
+  10: $spacer * 10,
+  11: $spacer * 11,
+  12: $spacer * 12,
+  13: $spacer * 13,
+  14: $spacer * 14,
+  15: $spacer * 15,
+  16: $spacer * 16,
+  17: $spacer * 17,
+  18: $spacer * 18,
+  19: $spacer * 19,
+  20: $spacer * 20,
+  21: $spacer * 21,
+  22: $spacer * 22,
+  23: $spacer * 23,
+  24: $spacer * 24,
+  25: $spacer * 25,
+  26: $spacer * 26,
+  27: $spacer * 27,
+  28: $spacer * 28,
+) !default;
+
+$btn-border-radius:                     0 !default;
+$btn-border-radius-sm:                  0 !default;
+$btn-border-radius-lg:                  0 !default;
+
+$input-border-color:                    var(--bs-border-color) !default;
+$input-font-family:                     var(--bs-font) !default;
+$input-font-size:                       var(--bs-body-ff) !default;
+$input-font-weight:                     var(--bs-font-medium) !default;
+$input-transition:                      var(--transition) !default;
+
+$input-border-radius:                   0 !default;
+$input-border-radius-sm:                0 !default;
+$input-border-radius-lg:                0 !default;
+
+$input-focus-border-color:              var(--bs-primary) !default;
+
+$form-floating-height:                  auto !default;
+$form-floating-line-height:             var(--bs-body-lh) !default;
+$form-floating-padding-x:               20px !default;
+$form-floating-label-opacity:           1 !default;
+$form-floating-label-transform:         none !default;
+$form-floating-transition:              var(--transition) !default;
+
+$form-check-input-width:                20px !default;
+$form-check-min-height:                 20px !default;
+$form-check-padding-start:              30px !default;
+$form-check-margin-bottom:              0 !default;
+$form-check-label-color:                rgba($body-color, 0.7) !default;
+
+$form-check-input-bg:                   var(--bs-white) !default;
+$form-check-input-border:               1px solid var(--bs-border-color) !default;
+$form-check-input-border-radius:        0px !default;
+$form-check-radio-border-radius:        50% !default;
+$form-check-input-focus-border:         var(--bs-primary) !default;
+$form-check-input-focus-box-shadow:     none !default;
+$form-check-input-checked-color:        $white;
+
+$form-check-radio-checked-bg-image:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-9 -9 18 18'><circle x='0' y='0' r='6' fill='#{$form-check-input-checked-color}'/></svg>") !default;
+
+// scss-docs-start alert-variables
+$alert-padding-y:                       $spacer !default;
+$alert-padding-x:                       20px !default;
+$alert-margin-bottom:                   var(--bs-gutter) !default;
+$alert-border-radius:                   0 !default;
+// scss-docs-end alert-variables
+
+$card-border-radius:                    0 !default;
+
+
+$modal-footer-margin-between:       20px;
+$modal-dialog-margin:               20px;
+$modal-dialog-margin-y-sm-up:       20px;
+$modal-content-color:               null;
+$modal-content-bg:                  var(--bs-white);
+$modal-content-border-width:        0;
+$modal-content-border-radius:       0;
+$modal-content-inner-border-radius: 0;
+
+$modal-backdrop-opacity:            .7;
+
+$modal-sm:                          400px;
+$modal-md:                          600px;
+$modal-lg:                          800px;
+$modal-xl:                          1020px;

@@ -1,0 +1,94 @@
+
+OVERVIEW
+---------
+
+=> This push notification library implemented because old cloud messaging API may be depricated in future and for new projects it is disabled and compulsory to integrate Firebase Cloud Messaging API (V1).
+
+=> Push_notification.php library developed based on given below references.
+1. https://firebase.google.com/docs/cloud-messaging/migrate-v1
+2. https://github.com/googleapis/google-auth-library-php
+
+
+STEPS FOR IMPLEMENTATION
+------------------------
+
+1. Install dependancy package via composer. "composer.phar require google/auth"
+2. Place Push_notification.php under application/libraries
+3. Place json file (generated from firebase account) and change in generate_token function in Push_notification.php. Change in putenv(). place proper file path to json file.
+4. change in prepare_push_notification_and_send function CURLOTP_URL rename project name in URL.
+
+
+LIST OF EXAMPLES
+----------------
+
+============================
+|Targeting Specific Devices|
+============================
+{
+   "message":{
+      "token":"bk3RNwTe3H0:CI2k_HHwgIpoDKCIZvvDMExUdFQ3P1...",
+      "notification":{
+        "body":"This is an FCM notification message!",
+        "title":"FCM Message"
+      }
+   }
+}
+
+===================================
+|Notification For Particular Topic|
+===================================
+{
+   "message":{
+      "topic":"GeneralNotifications",
+      "notification":{
+        "body":"This is an FCM notification message!",
+        "title":"FCM Message"
+      }
+   }
+}
+
+==========================
+| Notification With Data |
+==========================
+{
+   "message":{
+      "topic":"GeneralNotifications",
+      "notification":{
+        "body":"This is an FCM notification message!",
+        "title":"FCM Message"
+      },
+      "data": {
+        "screenType": "order",
+        "order_id": "1"
+      }
+   }
+}
+
+=====================================
+|Customizing With Platform Overrides|
+=====================================
+{
+  "message": {
+    "topic": "news",
+    "notification": {
+      "title": "Breaking News",
+      "body": "New news story available."
+    },
+    "data": {
+      "story_id": "story_12345"
+    },
+    "android": {
+      "notification": {
+        "click_action": "TOP_STORY_ACTIVITY",
+        "body": "Check out the Top Story"
+      }
+    },
+    "apns": {
+      "payload": {
+        "aps": {
+          "category" : "NEW_MESSAGE_CATEGORY"
+        }
+      }
+    }
+  }
+}
